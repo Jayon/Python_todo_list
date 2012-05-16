@@ -82,6 +82,15 @@ def show_json(json):
         return {'task':'This item number does not exist!'}
     else:
         return {'Task': result[0]}
+    
+#we should be able to do CRUD on that resource(via get,post,put,delete)
+@route('/todo/api/todo',method='POST')#creates a todo
+@route('/todo/api/todo',method='GET')#gets all todos
+@route('/todo/api/todo',method='DELETE')#deletes all todos
+@route('/todo/api/todo',method='PUT')#modify several todos
+@route('/todo/api/todo/id',method="GET")#returns the todo,or an error if doesn't exists
+@route('/todo/api/todo/id',method='PUT')#modify the todo
+@route('/todo/api/todo/id',method='DELETE')#delete the todo
 
 @route('/help')
 def help():
@@ -100,4 +109,4 @@ def mistake500(code):
     return 'Sorry,the server is fixing'
 
 debug(True)
-run(server='paste',reloader=True)
+run(server='paste', reloader=True)
